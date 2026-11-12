@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Cesim 防挂机助手",
+  "version": "1.2.0",
+  "description": "在 Cesim 操作界面自动滚动、程序化点击、模拟鼠标活动并发送心跳请求，规避长时间挂机导致的登录失效（不移动真实光标，不影响正常鼠标操作）",
+  "permissions": ["storage", "alarms"],
+  "host_permissions": ["*://*.cesim.cn/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.cesim.cn/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Cesim 防挂机助手"
+  }
+}
